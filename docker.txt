@@ -1,0 +1,10 @@
+#execute the Dockerfile
+docker build .
+
+#
+docker-compose build
+
+# create django project in the specific WORK in Dockerfile
+docker-compose run app sh -c "django-admin.py startproject app ."
+
+#
