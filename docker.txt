@@ -1,10 +1,20 @@
 #execute the Dockerfile
 docker build .
 
-#
+#rebuild docker if ant added libraries or requiremnts
 docker-compose build
 
 # create django project in the specific WORK in Dockerfile
 docker-compose run app sh -c "django-admin.py startproject app ."
 
-#
+#run unit tests
+docker-compose run app sh -c "python manage.py test"
+
+#run unit with flake8
+docker-compose run app sh -c "python manage.py test && flake8"
+
+#create app
+docker-compose run app sh -c "python manage.py startapp core"
+
+#makemigrations
+docker-compose run app sh -c "python manage.py makemigrations core"
