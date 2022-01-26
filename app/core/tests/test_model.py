@@ -9,8 +9,8 @@ class ModelTests(TestCase):
         email = 'test@gmail.com'
         password = 'Testpass123'
         user = get_user_model().objects.create_user(
-            email = email,
-            password = password
+            email=email,
+            password=password
         )
 
         self.assertEqual(user.email, email)
@@ -27,7 +27,7 @@ class ModelTests(TestCase):
         """Test creating user with no email raises error"""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(None, 'test123')
-            
+
     def test_create_new_super_user(self):
         """Test creating a new super user"""
         user = get_user_model().objects.create_superuser(
